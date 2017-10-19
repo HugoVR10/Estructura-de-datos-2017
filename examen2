@@ -1,0 +1,53 @@
+package ordenamiento;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Examen2 {
+			public static String reverseParentheses(String exp) {
+			
+			Stack<Character> stack = new Stack<Character>();
+			Queue<Character> queue = new Queue<Character>();
+			String resultado = "";
+			int i = 0;
+			
+			for (char c: exp.toCharArray()) {
+				if (c == '(') {
+					stack.push(c);
+					i ++; 
+				}
+				else 
+					
+					if (c == ')') {
+					if (i > 1){
+						while(stack.peek() != '(')
+							queue.offer(stack.pop());
+						stack.pop();
+						while(!queue.isEmpty())
+							stack.push(queue.remove());
+					}
+					else {
+						while(stack.peek() != '(')
+							resultado += stack.pop();
+					}
+					i --;
+				}
+				else if (i > 0) {
+					stack.push(c);
+				}
+				else
+					resultado += c; 
+			}
+			return resultado;
+		}
+
+		
+	
+public static void main(String[] args) {
+	System.out.println(reverseParentheses("¡Mi examen de estructura de datos!"));
+	System.out.println(reverseParentheses("a(bc)de"));
+	System.out.println(reverseParentheses("(ab)(cd)(ef)g"));
+	System.out.println(reverseParentheses("a(bc(de)fg)h"));
+	System.out.println(reverseParentheses("E(xa(men (de) e)str)uctu(ras( de da)to)s"));
+	}
+}
