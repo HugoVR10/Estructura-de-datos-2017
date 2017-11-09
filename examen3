@@ -1,0 +1,123 @@
+public class examen3 {
+
+	public static String allStar(String str){
+		if(str.equals("") || str.length() == 1) {
+			return str;}
+		else {
+			return str.substring(0,1) + "*" + allStar(str.substring(1));
+		}
+	}
+	
+	
+	
+	
+	
+	public static String endX(String str){
+		if(str.equals("") || str.length() == 1) {
+			return str;}
+		if (str.charAt(0) == 'x') {
+				return endX(str.substring(1)) + 'x';}
+		else {
+			return str.substring(0,1) + endX(str.substring(1));}
+		
+	}
+	
+	
+	
+	
+	
+	public static LinkedList<Integer> intersect(LinkedList<Integer> list1, LinkedList<Integer> list2){
+
+		LinkedList<Integer> anb = new LinkedList<Integer>();
+
+		for(int i = 0; i < list1.size(); i++){
+
+			if(list2.contains(list1.get(i)))
+
+				anb.add(list1.get(i));
+
+		}
+
+		return anb;
+
+	}
+		
+	
+	public static LinkedList<Integer> difference(LinkedList<Integer> list1, LinkedList<Integer> list2){
+
+		LinkedList<Integer> difference = new LinkedList<Integer>();
+
+		for(int i = 0; i < list1.size();i++){
+
+			if(!list2.contains(list1.get(i)))
+
+				difference.add(list1.get(i));
+
+		}
+
+		return difference;
+
+	}
+	
+	
+	
+	
+	public static int shapeArea(int n) {
+		if (n == 1) {
+			return 1;
+			}
+
+		else {
+		return 4*(n-1) + shapeArea(n-1); 
+		}
+	}
+
+
+	
+	
+	 public static void main(String[] args) {
+	
+	System.out.println(allStar("hello"));
+	System.out.println(allStar("abc"));
+	System.out.println(allStar("ab"));
+	System.out.println(allStar("a"));
+	
+	System.out.println(endX("a")); 
+	System.out.println(endX("x")); 
+	System.out.println(endX("rexx")); 
+	System.out.println(endX("xxhixx")); 
+	System.out.println(endX("xhixhix")); 
+	
+	LinkedList<Integer>a = new LinkedList<Integer>();
+	LinkedList<Integer> b = new LinkedList<Integer>();
+	a.add(0, 1);
+	a.add(1, 2);
+	a.add(2, 3);
+	a.add(3, 4);
+	a.add(4, 5);
+	a.add(5, 6);
+	a.add(6, 7);
+	a.add(7, 8);
+	a.add(8, 9);
+	
+	b.add(0, 1);
+	b.add(1, 2);
+	b.add(2, 3);
+	b.add(3, 10);
+	b.add(4, 45);
+	b.add(5, 5);
+	b.add(6, 11);
+	b.add(7, 8);
+	b.add(8, 9);
+	
+	System.out.println(difference(a,b));
+	System.out.println(intersect(a,b));
+  
+	System.out.println(shapeArea(1));
+	System.out.println(shapeArea(2));
+	System.out.println(shapeArea(3));
+	System.out.println(shapeArea(4));
+	System.out.println(shapeArea(5));
+	
+	 }
+}
