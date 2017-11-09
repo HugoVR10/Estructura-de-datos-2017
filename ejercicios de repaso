@@ -1,0 +1,138 @@
+ublic class ejercicios {
+
+	
+	public static int pow(int base, int exponent){
+        if(exponent== 0){
+            return 1;
+        }
+        else {
+           return base*pow(base,exponent-1);
+               
+        }  
+    }
+   
+    
+    public static int consecutiveAddition(int start, int end) {
+    	if(start>end){
+    		return 0;
+    	}
+    	else {
+    		
+    		return start+consecutiveAddition(start+1, end);
+    	}
+    }
+    
+    
+    public static int gcd(int m, int n) {
+    	if(m==n || n==0) {
+    		return m;
+    	}	
+    	else if(m>n){
+    		return gcd(m-n,n);	
+    	}
+    	else  {
+    		return gcd(m,n-m);
+    	}
+    }
+    
+    
+    
+    public static String toBinary(int n){
+    	if(n==0) {
+    		return  "";
+    		
+    	}
+    	else {
+    		return toBinary(n/2)+(n%2);
+    		
+    	}	
+    }
+    
+    public static int max(LinkedList<Integer> list){
+    	if(list == null){
+    		return Integer.MIN_VALUE;
+    		
+    	}
+    	else {
+    		
+    		
+    		
+    	}
+    	
+    	
+    	return 1;
+      	
+    	
+    }
+   
+    public static String reverseParentheses(String inputString) {
+		Stack<Stack<Character>> letters = 
+				new Stack<Stack<Character>>();
+		String result = "";
+		for (int i = 0; i < inputString.length(); i++) {
+			char ch = inputString.charAt(i);
+			if (ch == '(') {
+				letters.push(new Stack<Character>());
+			} else if (ch == ')') {
+				Stack<Character> reversed = letters.pop();
+				if (letters.empty()) {
+					while (!reversed.empty()) {
+						result += reversed.pop();
+					}
+				} else {
+					while (!reversed.empty()) {
+						letters.peek().push(reversed.pop());
+					}
+				}
+			} else {
+				if (!letters.empty()) {
+					letters.peek().push(ch);
+				} else {
+					result += ch;
+				}
+			}
+
+		}
+
+		return result;
+
+	}
+    
+    
+    public static Queue<Integer> merge(Queue<Integer> q1, Queue<Integer> q2){
+		Queue<Integer> result = new Queue<Integer>();
+		while(!q1.isEmpty() && !q2.isEmpty()){
+			if(q1.element() < q2.element()){
+				result.offer(q1.remove());
+			}
+			else
+				result.offer(q2.remove());
+		}
+		while(!q1.isEmpty())
+			result.offer(q1.remove());
+		while(!q2.isEmpty())
+			result.offer(q2.remove());
+		return result;
+	}
+    
+    
+    
+ 
+	
+   
+    
+    public static void main(String[] args) {
+    	System.out.println(gcd(10,1));
+        System.out.println(pow(2,3));
+        System.out.println(consecutiveAddition(1,4));
+        System.out.println(toBinary(11));
+        System.out.println(reverseParentheses("E(xa(men (de) e)str)uctu(ras( de da)to)s"));
+        
+        SLinkedList<String>daList = new SLinkedList<String>();
+        daList.addLast("name");
+        daList.addLast("n");
+        daList.addLast("n");
+        System.out.println(daList.count("n"));
+        
+    }
+}
