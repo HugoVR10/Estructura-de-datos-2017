@@ -1,0 +1,185 @@
+package BinaryNode;
+
+import Queue.Queue; 
+
+public class BinaryNode {
+
+	public int value; 
+
+	public BinaryNode leftChild;
+
+    public BinaryNode rightChild;
+
+
+
+    public BinaryNode(int value){
+
+        this.value = value;
+
+        leftChild = null;
+
+        rightChild = null;
+
+    }
+
+
+
+    public void preorderTraversal(){
+
+        preorder(this);
+
+    }
+
+
+
+    public void inorderTraversal(){
+
+        inorder(this);
+
+    }
+
+
+
+    public void postorderTraversal(){
+
+        postorder(this);
+
+    }
+
+
+
+    public void dephFirstTraversal(){
+
+        Queue<BinaryNode> fila =new Queue();
+
+        BinaryNode temp;
+
+        fila.offer(this);
+
+        while(!fila.isEmpty()){
+
+            temp = fila.remove();
+
+            System.out.print(temp.value);
+
+
+
+            if(temp.leftChild != null && temp.rightChild != null) {
+
+                fila.offer(temp.leftChild);
+
+                fila.offer(temp.rightChild);
+
+            }else {
+
+                if(temp.leftChild != null){
+
+                    fila.offer(temp.leftChild);
+
+                }else if(temp.rightChild != null){
+
+                    fila.offer(temp.rightChild);
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+
+    private void preorder(BinaryNode node){
+
+        if(node.leftChild == null && node.rightChild == null){
+
+            System.out.print(node.value);
+
+            return;
+
+        }
+
+        if(node.leftChild != null){
+
+            System.out.print(node.value);
+
+            preorder(node.leftChild);
+
+            preorder(node.rightChild);
+
+        } else{
+
+            System.out.print(node.value);
+
+            preorder(node.rightChild);
+
+        }
+
+
+
+    }
+
+
+
+    private void inorder(BinaryNode node){
+
+        if(node.leftChild == null && node.rightChild == null) {
+
+            System.out.print(node.value);
+
+            return;
+
+        }
+
+        if(node.leftChild!=null){
+
+            inorder(node.leftChild);
+
+            System.out.print(node.value);
+
+            inorder(node.rightChild);
+
+        }else{
+
+            System.out.print(node.value);
+
+            inorder(node.rightChild);
+
+        }
+
+    }
+
+
+
+    private void postorder(BinaryNode node){
+
+        if(node.leftChild == null && node.rightChild == null){
+
+            System.out.print(node.value);
+
+            return;
+
+        }
+
+        if(node.leftChild != null) {
+
+            postorder(node.leftChild);
+
+            postorder(node.rightChild);
+
+            System.out.print(node.value);
+
+        }else{
+
+            postorder(node.rightChild);
+
+            System.out.print(node.value);
+
+        }
+
+}
+
+
+
+}
