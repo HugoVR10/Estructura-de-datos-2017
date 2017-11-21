@@ -1,0 +1,89 @@
+ public static void mergeSort(int [] arr, int[] arrs, int start, int end) {
+
+
+
+	        if (start >= end) {
+
+	            return;
+
+	        }
+
+
+
+	        int midpoint = (start+end)/2;
+
+
+
+	        mergeSort(arr,arrs,start,midpoint);
+
+	        mergeSort(arr,arrs,midpoint+1,end);
+
+
+
+	        int leftIndex = start;
+
+	        int rightIndex = midpoint + 1;
+
+
+
+	        int scratchIndex = leftIndex;
+
+
+
+	        while(leftIndex <= midpoint && rightIndex <= end) {
+
+
+
+	            if(arr[leftIndex] <= arr[rightIndex]) {
+
+	                arrs[scratchIndex] = arr[leftIndex++];
+
+
+
+	            }else {
+
+	                arrs[scratchIndex] = arr[rightIndex++];
+
+
+
+	            }
+
+
+
+	            scratchIndex++;
+
+	        }
+
+
+
+	        for (int i = leftIndex; i <= midpoint ; i++) {
+
+	            arrs[scratchIndex++] = arr[i];
+
+
+
+	        }
+
+
+
+	        for (int i = rightIndex; i <= end ; i++) {
+
+	            arrs[scratchIndex++] = arr[i];
+
+
+
+	        }
+
+
+
+	        for (int i = start; i <= end; i++) {
+
+	            arr[i]=arrs[i];
+
+	        }
+
+
+
+	}
+
+}
