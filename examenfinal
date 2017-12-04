@@ -1,0 +1,127 @@
+public class examenFinal {
+	
+	  public static String cleanString(String s) {
+
+		    String string = s;
+		    
+		    string = string.replaceAll("1","");
+		    string = string.replaceAll("2","");
+		    string = string.replaceAll("3","");
+		    string = string.replaceAll("4","");
+		    string = string.replaceAll("5","");
+		    string = string.replaceAll("6","");
+		    string = string.replaceAll("7","");
+		    string = string.replaceAll("8","");
+		    string = string.replaceAll("9","");
+		    string = string.replaceAll("0","");
+		    string = string.replaceAll("#" ,"");
+		    string = string.replaceAll("/" ,"");
+		    string = string.replaceAll("!" ,"");
+		    string = string.replaceAll("$" ,"");
+		    string = string.replaceAll("%" ,"");
+		    string = string.replaceAll("&" ,"");		    		    
+		    string = string.replaceAll("-" ,"");
+		    string = string.replaceAll("_" ,"");
+		    return string.trim().toUpperCase();
+
+		  }
+	  
+	  
+	  public static int mystery(int m, int n){
+			if(m == 0)
+				return n+1;
+			if(m > 0 && n == 0)
+				return mystery(m-1,1);
+			if(m > 0 && n > 0)
+				return mystery(m-1,mystery(m,n-1));
+			return 0;			
+		}
+	
+	
+	
+	
+	
+	public static void insertInOrder(LinkedList<Integer> lst, int element) {
+				for(int i = 0;  i < lst.size(); i++){
+			lst.addLast(element);}
+		
+	}
+	
+	public static void moveToBeginning(LinkedList<Integer> lst, int element) {
+		if(element > lst.size()-1){
+			throw new IndexOutOfBoundsException();
+		}
+		int beginning = lst.get(element);
+		lst.remove(element);
+		lst.addFirst(beginning);
+		
+	}
+	
+	public static void eraseInOrder(LinkedList<Integer> lst,int count, boolean desc){
+		if(desc == true){
+			for(int i = 0; i < count; i++){
+				lst.removeLast();
+				if(lst.isEmpty())
+					break;
+			}
+		} else {
+			for(int i = 0; i < count; i++){
+				lst.removeFirst();
+				if(lst.isEmpty())
+					break;
+			}
+		}
+	}
+	
+	public static int get(Stack<Integer> stack, int i){
+		Stack<Integer> pila = stack;
+		if(i > stack.size())
+			throw new IndexOutOfBoundsException();
+		if(i == 0)
+			return stack.peek();
+		for(int j = 0; j < i; j++){
+			pila.pop();
+		}
+
+		return pila.peek();
+		}
+	
+	public static void moveToTop(Stack<Integer> stack, int i){
+		Queue<Integer> fila = new Queue<Integer>();
+		if(i > stack.size())
+			throw new IndexOutOfBoundsException();
+		for(int j = 0; j < i; j++){
+			fila.offer(stack.pop());
+		}
+		int move = stack.pop();
+		while(!fila.isEmpty()){
+			fila.push(fila.remove());
+
+		}
+
+		fila.push(move);
+
+	}
+
+	
+	
+	
+	
+	public static LinkedList<Integer> union(LinkedList<Integer> list1, LinkedList<Integer> list2){
+		
+		LinkedList<Integer> aub = new LinkedList<Integer>();
+		
+		for(int i = 0;  i < list1.size(); i++){
+				aub.addLast(list1.get(i));
+		}for(int j =0; j < list2.size(); j++) {
+				aub.addLast(list2.get(j));
+		}
+		
+		return aub;
+		
+			
+		}
+	
+	
+	
+}
