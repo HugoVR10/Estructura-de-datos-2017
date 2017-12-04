@@ -58,8 +58,7 @@ public class examenFinal {
 	}
 	
 	public static void eraseInOrder(LinkedList<Integer> lst,int count, boolean desc){
-		if(desc == true){
-			for(int i = 0; i < count; i++){
+		if(desc == true)			for(int i = 0; i < count; i++){
 				lst.removeLast();
 				if(lst.isEmpty())
 					break;
@@ -95,7 +94,7 @@ public class examenFinal {
 		}
 		int move = stack.pop();
 		while(!fila.isEmpty()){
-			fila.push(fila.remove());
+			stack.push(fila.remove());
 
 		}
 
